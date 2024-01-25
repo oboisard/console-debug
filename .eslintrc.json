@@ -1,0 +1,140 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "jest",
+    "@typescript-eslint",
+    "lookbehind-assertions",
+    "prettier"
+  ],
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "commonjs": true,
+    "jest/globals": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "project": ["./tsconfig.json"],
+    "ecmaVersion": 2021,
+    "sourceType": "module"
+  },
+  "ignorePatterns": ["**/scripts/**/*.js", "dist/**/*.*"],
+  "rules": {
+    // tabs
+    "indent": [0],
+    // common
+    "no-shadow": [0],
+    "prefer-promise-reject-errors": [0],
+    "no-unused-expressions": [0],
+    "prefer-exponentiation-operator": [0],
+    "no-extra-boolean-cast": [1],
+    "no-restricted-properties": [1],
+    "no-param-reassign": [
+      1,
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": ["state", "draft", "draftState"]
+      }
+    ],
+    "max-len": [
+      1,
+      {
+        "tabWidth": 2,
+        "code": 150,
+        "comments": 180,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreRegExpLiterals": true
+      }
+    ],
+    "lookbehind-assertions/no-lookbehind-assertions-regexp": [2],
+    // typescript
+    "@typescript-eslint/no-loss-of-precision": [0],
+    "@typescript-eslint/quotes": [
+      1,
+      "single",
+      {
+        "allowTemplateLiterals": true,
+        "avoidEscape": true
+      }
+    ],
+    "@typescript-eslint/naming-convention": [
+      1,
+      {
+        "selector": "variable",
+        "format": ["camelCase", "PascalCase", "UPPER_CASE"],
+        "leadingUnderscore": "allow"
+      },
+      {
+        "selector": "variable",
+        "types": ["boolean"],
+        "format": ["camelCase", "UPPER_CASE"],
+        "custom": {
+          "match": true,
+          "regex": "^[is|has|should|enable|require|force|disable|IS|ENABLE]"
+        }
+      },
+      {
+        "selector": "variable",
+        "types": ["array"],
+        "format": ["camelCase", "UPPER_CASE"],
+        "custom": {
+          "match": true,
+          "regex": "[s|List|Items|S|LIST|ITEMS|sMock|Field|Array|Children|children]$"
+        }
+      },
+      {
+        "selector": "interface",
+        "format": ["PascalCase"],
+        "custom": {
+          "regex": "^I[A-Z]",
+          "match": true
+        }
+      },
+      {
+        "selector": "typeLike",
+        "format": ["PascalCase"]
+      },
+      {
+        "selector": "parameter",
+        "format": ["camelCase"],
+        "leadingUnderscore": "allow"
+      },
+      {
+        "selector": "function",
+        "format": ["camelCase"]
+      },
+      {
+        "selector": "enum",
+        "format": ["PascalCase", "UPPER_CASE"]
+      },
+      {
+        "selector": "enumMember",
+        "format": ["UPPER_CASE"]
+      }
+    ],
+    "@typescript-eslint/explicit-function-return-type": [
+      0,
+      {
+        "allowExpressions": true,
+        "allowHigherOrderFunctions": true
+      }
+    ], // => 1
+    "@typescript-eslint/no-unsafe-assignment": [0],
+    "@typescript-eslint/no-unsafe-return": [0],
+    "@typescript-eslint/no-unsafe-member-access": [0],
+    "@typescript-eslint/no-unsafe-call": [0],
+    "@typescript-eslint/no-floating-promises": [0],
+    "@typescript-eslint/restrict-template-expressions": [0],
+    "@typescript-eslint/explicit-module-boundary-types": [0],
+    "@typescript-eslint/restrict-plus-operands": [1],
+    "@typescript-eslint/ban-types": [1],
+    "@typescript-eslint/no-unused-vars": [1],
+    "@typescript-eslint/no-explicit-any": [0] // => 1
+  }
+}
